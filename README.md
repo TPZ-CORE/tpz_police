@@ -23,7 +23,7 @@
 | setjailtime [source] [duration]  | tpzcore.police.set_jail_duration    | Execute this command to increase or decrease the jail duration of the selected player. |
 | unjail [source]                  | tpzcore.police.jail_out             | Execute this command to un-jail the selected player.                                   |
 | checkjailtime [source]           | tpzcore.police.check_jail_duration  | Execute this command to check the jail duration of the selected player.                |
-
+| badge                            | N/A (ONLY THROUGH JOB REQUIREMENT)  | Execute this command to show your badge to the closest players.                        |
 
 - The ace permission: `tpzcore.all` Gives permissioms to all commands and actions (FOR ALL OFFICIAL PUBLISHED FREE SCRIPTS).
 - The ace permission: `tpzcore.police.all` Gives permissions to all actions or commands ONLY for this script.
