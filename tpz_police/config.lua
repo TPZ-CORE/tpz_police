@@ -25,9 +25,6 @@ Config.WagonPrompts = {
 
 Config.PoliceJobs = { 'police', 'detective' } -- (!) ADD ALL THE AVAILABLE POLICE JOB NAMES! OTHERWISE A POLICE JOB NAME WON'T BE FUNCTIONAL.
 
--- Would you like the police to buy specific items?
--- You can implement that directly from tpz_stores.
-
 ---------------------------------------------------------------
 --[[ Usable Items ]]--
 ---------------------------------------------------------------
