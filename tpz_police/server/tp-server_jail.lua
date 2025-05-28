@@ -2,7 +2,6 @@ local TPZ = exports.tpz_core:getCoreAPI()
 
 local Jailist = {}
 
-
 -----------------------------------------------------------
 --[[ Functions  ]]--
 -----------------------------------------------------------
@@ -36,6 +35,10 @@ convertSecondsToText = function(seconds)
         table.insert(parts, mins .. " " .. (mins ~= 1 and Locales['MINUTES'] or Locales['MINUTE']))
     end
 
+	if seconds < 60 then
+		table.insert(parts, seconds .. " " .. (seconds ~= 1 and Locales['SECONDS'] or Locales['SECOND']))
+	end
+
     return table.concat(parts, " " .. Locales['AND'] .. " ")
 end
 
@@ -46,6 +49,8 @@ SetCharacterJailed = function(target, duration)
 
     duration = os.time() + (duration)
 
+	TriggerClientEvent("tpz_police:client:setCharacterAsJailed", target, true)
+
 	local Parameters = {
 		['charidentifier'] = charIdentifier,
 		['jailed_until']   = duration,
@@ -53,7 +58,7 @@ SetCharacterJailed = function(target, duration)
 
 	exports.ghmattimysql:execute("UPDATE `characters` SET `jailed_until` = @jailed_until WHERE `charidentifier` = @charidentifier", Parameters )
 
-	Jailist[charIdentifier] = { source = target, duration = duration, charIdentifier = charIdentifier }
+	Jailist[charIdentifier] = { source = target, charIdentifier = charIdentifier }
 end
 
 SetCharacterUnJailed = function(target)
@@ -123,67 +128,35 @@ AddEventHandler("tpz_police:server:requestJailTime", function()
 			return
 		end
 
-		if result[1].jailed_until ~= 0 and os.time() >= result[1].jailed_until then
+		local remaining = result[1].jailed_until - os.time()
+
+		if (result[1].jailed_until ~= 0) and (remaining <= -1 or os.time() >= result[1].jailed_until) then
 			exports.ghmattimysql:execute("UPDATE `characters` SET `jailed_until` = 0 WHERE `charidentifier` = @charidentifier", { ['charidentifier'] = charIdentifier } )
 		end
 
-		if result[1].jailed_until ~= 0 then
+		if remaining > 0 and result[1].jailed_until > 0 then
 
-			local remaining = result[1].jailed_until - os.time()
+			print('banned', remaining)
+
 			local durationDisplay = convertSecondsToText(remaining)
 
-			print(remaining, durationDisplay)
-
 			if Jailist[charIdentifier] == nil then
-				Jailist[charIdentifier] = { source = _source, duration = tonumber(remaining), charIdentifier = tonumber(charIdentifier) }
+
+				Jailist[charIdentifier] = { 
+					source = _source, 
+					charIdentifier = tonumber(charIdentifier) 
+				}
 
 			else
 				Jailist[charIdentifier].source   = _source
-				Jailist[charIdentifier].duration = tonumber(remaining)
 			end
 
 			TriggerClientEvent("tpz_police:client:setCharacterAsJailed", _source, true)
 
-			-- player is still jailed
-
+		else
+			TriggerClientEvent("tpz_police:client:setCharacterAsJailed", _source, false)
 		end
-
+		
 	end)
 
 end)
-
------------------------------------------------------------
---[[ Threads ]]--
------------------------------------------------------------
-
---[[
-Citizen.CreateThread(function()
-
-	while true do
-
-		Wait(60000)
-
-		if TPZ.GetTableLength(Jailist) > 0 then
-
-			for index, jailed in pairs (Jailist) do
-				
-				print('duration', jailed.duration)
-
-				jailed.duration = jailed.duration - 60
-	
-				if jailed.duration <= 0 then
-	
-					TriggerClientEvent("tpz_police:client:setCharacterAsJailed", tonumber(jailed.source), false)
-					exports.ghmattimysql:execute("UPDATE `characters` SET `jailed_until` = 0 WHERE `charidentifier` = @charidentifier", { ['charidentifier'] = jailed.charIdentifier } )
-	
-					Jailist[jailed.charIdentifier] = nil
-				end
-	
-			end
-		
-		end
-
-	end
-
-end)
-]]--
