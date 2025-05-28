@@ -136,8 +136,6 @@ AddEventHandler("tpz_police:server:requestJailTime", function()
 
 		if remaining > 0 and result[1].jailed_until > 0 then
 
-			print('banned', remaining)
-
 			local durationDisplay = convertSecondsToText(remaining)
 
 			if Jailist[charIdentifier] == nil then
