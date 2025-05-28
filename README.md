@@ -20,7 +20,6 @@
 | Command                          | Ace Permission                      | Description                                                                            |
 |----------------------------------|-------------------------------------|----------------------------------------------------------------------------------------|
 | jail [source] [duration]         | tpzcore.police.jail                 | Execute this command to jail the selected player.                                      |
-| setjailtime [source] [duration]  | tpzcore.police.set_jail_duration    | Execute this command to increase or decrease the jail duration of the selected player. |
 | unjail [source]                  | tpzcore.police.jail_out             | Execute this command to un-jail the selected player.                                   |
 | checkjailtime [source]           | tpzcore.police.check_target_jail_duration  | Execute this command to check the jail duration of the selected player.                |
 | myjailtime                       | tpzcore.police.check_jail_duration  | Execute this command to check the jail duration of your player.                        |
