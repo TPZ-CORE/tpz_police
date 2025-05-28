@@ -32,3 +32,4 @@
 
 - Usable items based on the police job such as handcuffs, handcuff keys and detective kit to find the cause of player death. 
 - Jail system that works offline and online in case a player leaves or server restarts, the player will be teleported to the jail cell until his / her time is finished. 
+- Wagon selector based on police jobs and grades support for allowing the police to have transports through a camera view wagon selector. 
