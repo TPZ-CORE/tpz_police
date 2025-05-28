@@ -311,18 +311,6 @@ Config.Commands = {
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
     },
 
-    { 
-        ActionType = "ALERT_POLICE", -- DO NOT TOUCH
-        Suggestion = "Execute this command to alert the police to your location when you are unconsious.",
-
-        Command = 'alertpolice', -- SET TO FALSE TO DISABLE IT.
-
-        AlertJobs = {'police', 'detective' },
-        OnlyUnconsious = true, -- Set to true if you want only unconsious players to alert police.
-
-        Cooldown = 10, -- Time in minutes
-    },
-
 }
 
 -----------------------------------------------------------
