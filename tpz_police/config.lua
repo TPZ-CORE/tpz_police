@@ -1,6 +1,6 @@
 Config = {}
 
-Config.DevMode = false
+Config.DevMode = true
 
 Config.Keys = {
     ['G'] = 0x760A9C6F,["B"] = 0x4CC0E2FE,['S'] = 0xD27782E3,['W'] = 0x8FD015D8,['H'] = 0x24978A28,
@@ -24,6 +24,9 @@ Config.WagonPrompts = {
 ---------------------------------------------------------------
 
 Config.PoliceJobs = { 'police', 'detective' } -- (!) ADD ALL THE AVAILABLE POLICE JOB NAMES! OTHERWISE A POLICE JOB NAME WON'T BE FUNCTIONAL.
+
+-- Would you like the police to buy specific items?
+-- You can implement that directly from tpz_stores.
 
 ---------------------------------------------------------------
 --[[ Usable Items ]]--
@@ -166,6 +169,86 @@ Config.Locations = {
 }
 
 ---------------------------------------------------------------
+--[[ Jail Rooms ]]--
+---------------------------------------------------------------
+
+Config.Jails = {
+
+    { 
+        Town = 'VALENTINE', 
+        JailInCoords = { x = -273.484, y = 811.2916, z = 118.37, h = 109.93661 }, 
+        JailOutCoords = { x = -269.902, y = 809.6586, z = 118.24, h = 281.648 } 
+    }, -- CELL #1
+
+    { 
+        Town = 'RHODES', 
+        JailInCoords = { x = 1355.316, y = -1303.33, z = 76.759, h = 260.1018 }, 
+        JailOutCoords = { x = 1358.903, y = -1295.14, z = 75.796, h = 37.31795 } 
+    }, -- CELL #1
+
+    { 
+        Town = 'VALENTINE', 
+        JailInCoords = { x = -271.658, y = 807.4848, z = 118.37, h = 106.4754 }, 
+        JailOutCoords = { x = -269.902, y = 809.6586, z = 118.24, h = 281.648 } 
+    }, -- CELL #2
+
+    { 
+        Town = 'SAINT DENIS', 
+        JailInCoords = { x = 2504.254, y = -1311.39, z = 47.953, h = 20.4542312 }, 
+        JailOutCoords = { x = 2492.141, y = -1308.86, z = 47.865, h = 109.191932 } 
+    }, -- CELL #1
+
+    { 
+        Town = 'SAINT DENIS', 
+        JailInCoords = { x = 2500.021, y = -1311.53, z = 47.953, h = 8.85217 }, 
+        JailOutCoords = { x = 2492.141, y = -1308.86, z = 47.865, h = 109.191932 } 
+    }, -- CELL #2
+
+    { 
+        Town = 'SAINT DENIS', 
+        JailInCoords = { x = 2498.187, y = -1306.38, z = 47.953, h = 181.2178 }, 
+        JailOutCoords = { x = 2492.141, y = -1308.86, z = 47.865, h = 109.191932 } 
+    }, -- CELL #3
+
+    { 
+        Town = 'SAINT DENIS', 
+        JailInCoords = { x = 2502.010, y = -1306.47, z = 47.953, h = 181.0465 }, 
+        JailOutCoords = { x = 2492.141, y = -1308.86, z = 47.865, h = 109.191932 } 
+    }, -- CELL #4
+
+    { 
+        Town = 'STRAWBERRY', 
+        JailInCoords = { x = -1810.11, y = -351.762, z = 160.43, h = 70.15028 }, 
+        JailOutCoords = { x = -1806.66, y = -353.258, z = 163.14, h = 295.525 } 
+    }, -- CELL #1
+
+    { 
+        Town = 'STRAWBERRY', 
+        JailInCoords = { x = -1812.88, y = -355.549, z = 160.44, h = 43.160144 }, 
+        JailOutCoords = { x = -1806.66, y = -353.258, z = 163.14, h = 295.525 } 
+    }, -- CELL #2
+
+    { 
+        Town = 'BLACKWATER', 
+        JailInCoords = { x = -762.858, y = -1264.21, z = 43.024, h = 9.2488 }, 
+        JailOutCoords = { x = -770.330, y = -1273.28, z = 42.549, h = 188.9837 } 
+    }, -- CELL #1
+
+    { 
+        Town = 'BLACKWATER', 
+        JailInCoords = { x = -766.557, y = -1263.01, z = 43.024, h = 177.86 }, 
+        JailOutCoords = { x = -770.330, y = -1273.28, z = 42.549, h = 188.9837 } 
+    }, -- CELL #2
+
+    { 
+        Town = 'ANNESBURG', 
+        JailInCoords = { x = 2903.195, y = 1314.463, z = 43.934, h = 315.4950 }, 
+        JailOutCoords = { x = 2910.889, y = 1303.941, z = 43.750, h = 268.58511 } 
+    }, -- CELL #1
+
+}
+
+---------------------------------------------------------------
 --[[ Commands ]]--
 ---------------------------------------------------------------
 
@@ -180,7 +263,7 @@ Config.Commands = {
         PermittedJobs   = { 'police' },
 
         Command = 'jail', -- SET TO FALSE TO DISABLE IT.
-        CommandHelpTips = { { name = "Id", help = 'Player ID' },  { name = "Duration", help = 'Insert the duration in hours' } },
+        CommandHelpTips = { { name = "Id", help = 'Player ID' },  { name = "Duration", help = 'Insert the duration in minutes' } },
     },
 
     { 
@@ -230,7 +313,7 @@ Config.Commands = {
 
     { 
         ActionType = "ALERT_POLICE", -- DO NOT TOUCH
-        Suggestion = "Execute this command to show your badge to the closest players.",
+        Suggestion = "Execute this command to alert the police to your location when you are unconsious.",
 
         Command = 'alertpolice', -- SET TO FALSE TO DISABLE IT.
 
