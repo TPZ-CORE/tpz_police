@@ -27,3 +27,7 @@
 
 - The ace permission: `tpzcore.all` Gives permissioms to all commands and actions (FOR ALL OFFICIAL PUBLISHED FREE SCRIPTS).
 - The ace permission: `tpzcore.police.all` Gives permissions to all actions or commands ONLY for this script.
+
+## Features
+
+- Usable items based on the police job such as handcuffs, handcuff keys and detective kit to find the cause of player death. 
