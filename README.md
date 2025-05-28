@@ -24,6 +24,7 @@
 | unjail [source]                  | tpzcore.police.jail_out             | Execute this command to un-jail the selected player.                                   |
 | checkjailtime [source]           | tpzcore.police.check_target_jail_duration  | Execute this command to check the jail duration of the selected player.                |
 | myjailtime                       | tpzcore.police.check_jail_duration  | Execute this command to check the jail duration of your player.                        |
+| breakhandcuffs [source]          | tpzcore.police.break_handcuffs      | Execute this command to break the handcuffs of a player who is handcuffed in case its bugged. |
 
 - The ace permission: `tpzcore.all` Gives permissioms to all commands and actions (FOR ALL OFFICIAL PUBLISHED FREE SCRIPTS).
 - The ace permission: `tpzcore.police.all` Gives permissions to all actions or commands ONLY for this script.
