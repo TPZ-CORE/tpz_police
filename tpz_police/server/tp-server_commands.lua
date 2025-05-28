@@ -91,7 +91,6 @@ Citizen.CreateThread(function()
 
             local duration = args[2]
 
-            print(duration)
             if (duration == nil or duration == '' or tonumber(duration) == nil or tonumber(duration) <= 0 ) then
               SendNotification(_source, "~e~ERROR: Use Correct Sintaxis", "error")
               return
@@ -108,10 +107,12 @@ Citizen.CreateThread(function()
               return
             end
 
-            SetCharacterJailed(target, ( duration * 60 * 60 ) )
+            SetCharacterJailed(target, ( duration * 60 ) )
 
-            SendNotification(_source, string.format(Locales['CHARACTER_JAILED_SUCCESS'], duration), "success")
-            SendNotification(target, string.format(Locales['CHARACTER_TARGET_JAILED'], duration), "info")
+            local durationDisplay = convertSecondsToText( ( duration * 60 ) )
+
+            SendNotification(_source, string.format(Locales['CHARACTER_JAILED_SUCCESS'], durationDisplay), "success")
+            SendNotification(target, string.format(Locales['CHARACTER_TARGET_JAILED'], durationDisplay), "info")
 
           else
 
