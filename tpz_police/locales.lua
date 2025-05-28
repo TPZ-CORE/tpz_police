@@ -26,8 +26,8 @@ Locales = {
     ['STORED_SUCCESSFULLY']             = "The wagon has been successfully stored.",
 
     ['CHARACTER_ALREADY_JAILED']        = "~e~This person is already in jail.",
-    ['CHARACTER_JAILED_SUCCESS']        = "You have placed a player in jail for %s hour-s.",
-    ['CHARACTER_TARGET_JAILED']         = "~e~You have been placed in jail for %s hour-s.",
+    ['CHARACTER_JAILED_SUCCESS']        = "You have placed a player in jail for %s.",
+    ['CHARACTER_TARGET_JAILED']         = "~e~You have been placed in jail for %s.",
 
     ['CHARACTER_NOT_JAILED']            = "~e~This person is not in jail.",
     ['CHARACTER_UN_JAILED_SUCCESS']     = "You have taken out a player from the jail.",
@@ -44,5 +44,7 @@ Locales = {
     ['HOURS']                                 = "hours",
     ['MINUTE']                                = "minute",
     ['MINUTES']                               = "minutes",
+    ['SECOND']                                = "second",
+    ['SECONDS']                               = "seconds",
     ['AND']                                   = "and",
 }
