@@ -170,9 +170,9 @@ AddEventHandler("tpz_police:client:item", function(itemIndex, data)
     local notifyWarning       = nil
 
     if item.RequiresPlayerNearby then
-        local nearestPlayers = TPZ.getNearestPlayers(Config.Items[itemIndex].PlayerNearestDistance)
+        local nearestPlayers = TPZ.GetNearestPlayers(Config.Items[itemIndex].PlayerNearestDistance)
 
-        if GetTableLength(nearestPlayers) > 0 then
+        if TPZ.GetTableLength(nearestPlayers) > 0 then
     
             local targetPlayer    = nearestPlayers[1] -- We get the first result.
             local targetPlayerPed = GetPlayerPed(targetPlayer)
