@@ -10,7 +10,6 @@ Citizen.CreateThread(function()
 	for _, item in pairs (Config.Items) do
 
 		TPZInv.registerUsableItem(item.Item, "tpz_police", function(data)
-
 			local _source = data.source
 
 			if _ == 'HANDCUFFS_KEY' then
@@ -27,7 +26,9 @@ Citizen.CreateThread(function()
 
 			end
 
-			TriggerClientEvent("tpz_police:client:item", _, cb) -- item index.
+			TriggerClientEvent("tpz_police:client:item", _source, _, cb) -- item index.
+			TriggerClientEvent('tpz_inventory:closePlayerInventory', _source)
+
 		end)	
 
 	end
