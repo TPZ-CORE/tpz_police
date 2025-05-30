@@ -264,6 +264,13 @@ Config.Commands = {
 
         Command = 'jail', -- SET TO FALSE TO DISABLE IT.
         CommandHelpTips = { { name = "Id", help = 'Player ID' },  { name = "Duration", help = 'Insert the duration in minutes' } },
+
+        Webhooking = {
+            Enable = false, 
+            Url    = "", 
+            Color  = 10038562
+        },
+
     },
 
     { 
@@ -276,6 +283,13 @@ Config.Commands = {
 
         Command = 'unjail', -- SET TO FALSE TO DISABLE IT.
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
+
+        Webhooking = {
+            Enable = false, 
+            Url    = "", 
+            Color  = 10038562
+        },
+
     },
 
     { 
@@ -288,6 +302,13 @@ Config.Commands = {
 
         Command = 'checkjailtime', -- SET TO FALSE TO DISABLE IT.
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
+
+        Webhooking = {
+            Enable = false, 
+            Url    = "", 
+            Color  = 10038562
+        },
+
     },
 
     { 
@@ -309,6 +330,13 @@ Config.Commands = {
 
         Command = 'breakhandcuffs', -- SET TO FALSE TO DISABLE IT.
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
+
+        Webhooking = {
+            Enable = false, 
+            Url    = "", 
+            Color  = 10038562
+        },
+
     },
 
 }
