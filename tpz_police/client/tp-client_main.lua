@@ -205,9 +205,17 @@ AddEventHandler("tpz_police:client:setCharacterAsJailed", function(isJailed)
     PlayerData.IsJailed = isJailed
 
     if not isJailed then
-        TPZ.TeleportToCoords(NearbyJail.JailOutCoords.x, NearbyJail.JailOutCoords.y, NearbyJail.JailOutCoords.z, NearbyJail.JailOutCoords.h)
+
+        if Config.TeleportOutsideCellOnUnJailed then
+            TPZ.TeleportToCoords(NearbyJail.JailOutCoords.x, NearbyJail.JailOutCoords.y, NearbyJail.JailOutCoords.z, NearbyJail.JailOutCoords.h)
+        end
+
     else
-        TPZ.TeleportToCoords(NearbyJail.JailInCoords.x, NearbyJail.JailInCoords.y, NearbyJail.JailInCoords.z, NearbyJail.JailInCoords.h)
+
+        if Config.TeleportCellOnJailed then
+            TPZ.TeleportToCoords(NearbyJail.JailInCoords.x, NearbyJail.JailInCoords.y, NearbyJail.JailInCoords.z, NearbyJail.JailInCoords.h)
+        end
+
         OnJailedCharacterThread()
     end
 
