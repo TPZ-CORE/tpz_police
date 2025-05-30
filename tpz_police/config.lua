@@ -366,13 +366,3 @@ function SendNotification(source, message, type)
     end
   
 end
-
----------------------------------------------------------------
---[[ Discord Webhooking ]]--
----------------------------------------------------------------
-
-Config.DiscordWebhooking = {
-    Enable = false, 
-    Url    = "", 
-    Color  = 10038562
-}
