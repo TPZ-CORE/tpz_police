@@ -172,12 +172,9 @@ Config.Locations = {
 --[[ Jail Cells ]]--
 ---------------------------------------------------------------
 
--- Set to true if you want the players who are in jail cell to be teleported
--- to the closest jail cell when they join and select the character. 
-Config.TeleportCellOnJoin = true
-
 -- Set to true if you want the player who got jailed (through a command) to be teleported
 -- to the closest jail cell by the system. 
+-- (!) The player cheracter will also be teleported if he is in jail on character select. 
 Config.TeleportCellOnJailed = true
 
 -- Set to true if you want the player to be automatically
