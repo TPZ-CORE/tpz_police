@@ -1,5 +1,8 @@
 local TPZ = exports.tpz_core:getCoreAPI()
 
+-----------------------------------------------------------
+--[[ Local Functions ]]--
+-----------------------------------------------------------
 
 local HasRequiredJob = function(currentJob, jobs)
 
@@ -13,6 +16,19 @@ local HasRequiredJob = function(currentJob, jobs)
 
   return false
 
+end
+
+local function GetPlayerData(source)
+    local _source = source
+    local xPlayer = TPZ.GetPlayer(_source)
+    
+    return {
+        steamName      = GetPlayerName(_source),
+        username       = xPlayer.getFirstName() .. ' ' .. xPlayer.getLastName(),
+        identifier     = xPlayer.getIdentifier(),
+        charIdentifier = xPlayer.getCharacterIdentifier(),
+    }
+    
 end
 
 -----------------------------------------------------------
@@ -48,6 +64,8 @@ Citizen.CreateThread(function()
         local _source = source
         local xPlayer = TPZ.GetPlayer(_source)
         local job     = xPlayer.getJob()
+
+        local PlayerData = GetPlayerData(_source)
 
         local hasPermittedJob             = HasRequiredJob(job, command.PermittedJobs)
         local hasAcePermissions           = hasPermittedJob
@@ -87,6 +105,8 @@ Citizen.CreateThread(function()
             return
           end
 
+          local canSendWebhook = true
+
           if command.ActionType == 'JAIL' then
 
             local duration = args[2]
@@ -113,6 +133,14 @@ Citizen.CreateThread(function()
 
             SendNotification(_source, string.format(Locales['CHARACTER_JAILED_SUCCESS'], durationDisplay), "success")
             SendNotification(target, string.format(Locales['CHARACTER_TARGET_JAILED'], durationDisplay), "info")
+
+            if command.Webhooking.Enabled then
+              local WebhookData = command.Webhooking
+              local title   = "📋` /".. command.Command .. " " .. target .. " " .. duration .. "`"
+              TPZ.SendToDiscordWithPlayerParameters(WebhookData.Url, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, "", WebhookData.Color)
+            end
+
+            canSendWebhook = false
 
           else
 
@@ -154,6 +182,14 @@ Citizen.CreateThread(function()
               SendNotification(_source, Locales['HANDCUFFS_BROKE'], "success")
             end
 
+            if canSendWebhook then
+
+              if command.Webhooking.Enabled then
+                local WebhookData = command.Webhooking
+                local title   = "📋` /".. command.Command .. " " .. target .. "`"
+                TPZ.SendToDiscordWithPlayerParameters(WebhookData.Url, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, "", WebhookData.Color)
+              end
+            end
 
           end
 
