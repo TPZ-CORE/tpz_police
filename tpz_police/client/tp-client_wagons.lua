@@ -330,6 +330,8 @@ end)
                                 SetModelAsNoLongerNeeded(GetHashKey(WagonData.Model))
         
                                 PlayerData.IsLocationBusy = false
+        
+                                PlayerData.IsBusy = false
                                 
                                 DestroyAllCams(true)
                                 TaskStandStill(PlayerPedId(), 1)
