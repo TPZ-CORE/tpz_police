@@ -275,7 +275,7 @@ Config.Commands = {
         CommandHelpTips = { { name = "Id", help = 'Player ID' },  { name = "Duration", help = 'Insert the duration in minutes' } },
 
         Webhooking = {
-            Enable = false, 
+            Enabled = false, 
             Url    = "", 
             Color  = 10038562
         },
@@ -294,7 +294,7 @@ Config.Commands = {
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
 
         Webhooking = {
-            Enable = false, 
+            Enabled = false, 
             Url    = "", 
             Color  = 10038562
         },
@@ -313,7 +313,7 @@ Config.Commands = {
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
 
         Webhooking = {
-            Enable = false, 
+            Enabled = false, 
             Url    = "", 
             Color  = 10038562
         },
@@ -341,7 +341,7 @@ Config.Commands = {
         CommandHelpTips = { { name = "Id", help = 'Player ID' } },
 
         Webhooking = {
-            Enable = false, 
+            Enabled = false, 
             Url    = "", 
             Color  = 10038562
         },
@@ -365,4 +365,5 @@ function SendNotification(source, message, type)
         TriggerClientEvent('tpz_core:sendBottomTipNotification', source, message, duration)
     end
   
+
 end
