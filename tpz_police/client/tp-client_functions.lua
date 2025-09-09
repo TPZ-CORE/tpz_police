@@ -1,6 +1,6 @@
 
-local Prompts, WagonPrompts       = GetRandomIntInRange(0, 0xffffff), GetRandomIntInRange(0, 0xffffff)
-local PromptList, WagonPromptList = {}, {}
+local Prompts, WagonPrompts, BadgePrompts      = GetRandomIntInRange(0, 0xffffff), GetRandomIntInRange(0, 0xffffff), GetRandomIntInRange(0, 0xffffff)
+local PromptList, WagonPromptList, BadgePromptsList = {}, {}, {}
 
 --[[-------------------------------------------------------
  Handlers
@@ -13,6 +13,7 @@ AddEventHandler("onResourceStop", function(resourceName)
 
 	Citizen.InvokeNative(0x00EDE88D4D13CF59, Prompts) -- UiPromptDelete
     Citizen.InvokeNative(0x00EDE88D4D13CF59, WagonPrompts) -- UiPromptDelete
+    Citizen.InvokeNative(0x00EDE88D4D13CF59, BadgePrompts) -- UiPromptDelete
 
 	local PlayerData = GetPlayerData()
 
@@ -108,6 +109,40 @@ end
 
 GetWagonsPromptData = function ()
     return WagonPrompts, WagonPromptList
+end
+
+RegisterBadgePrompts = function()
+
+	for index, tprompt in pairs (Config.BadgePrompts) do
+	
+		local str = tprompt.label
+        local keyPress = tprompt.key1
+        local keyPress2 = tprompt.key2
+
+        local dPrompt = PromptRegisterBegin()
+        PromptSetControlAction(dPrompt, Config.Keys[keyPress])
+
+        if keyPress2 then
+            PromptSetControlAction(dPrompt, Config.Keys[keyPress2])
+        end
+        
+        str = CreateVarString(10, 'LITERAL_STRING', str)
+        PromptSetText(dPrompt, str)
+        PromptSetEnabled(dPrompt, 1)
+        PromptSetVisible(dPrompt, 1)
+        PromptSetStandardMode(dPrompt, 0)
+        PromptSetHoldMode(dPrompt, false)
+        PromptSetGroup(dPrompt, BadgePrompts)
+        Citizen.InvokeNative(0xC5F428EE08FA7F2C, dPrompt, true)
+        PromptRegisterEnd(dPrompt)
+    
+        table.insert(BadgePromptsList, {prompt = dPrompt, type = index})
+	end
+
+end
+
+GetBadgePromptData = function ()
+    return BadgePrompts, BadgePromptsList
 end
 
 --[[-------------------------------------------------------
