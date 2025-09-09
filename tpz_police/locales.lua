@@ -1,7 +1,7 @@
 Locales = {}
 
 Locales = {
-
+    ['BADGE_ADJUST_PROMPT_FOOTER']    = "Badge Adjustment",
     ['PROMPT_ACTION']                 = "Checkout Police Wagons",
     ['NOT_REQUIRED_JOB']              = "~e~You don't have the required job.",
 
@@ -48,3 +48,4 @@ Locales = {
     ['SECONDS']                               = "seconds",
     ['AND']                                   = "and",
 }
+
