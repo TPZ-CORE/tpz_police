@@ -34,7 +34,6 @@ local HasRequiredJobToEquipBadge = function(currentJob, currentJobGrade)
 
             if job == currentJob then 
                 hasJob, jobPositionIndex = true, _
-                print(_)
                 break 
             end
         end
@@ -110,13 +109,9 @@ local function AdjustBadgeAttachmentPosition()
                 end
                 if IsControlJustReleased(0, Config.Keys[Config.BadgePrompts['ROTATE'].key1]) then
                     BadgeData.R = BadgeData.R + 2.0
-
-                    print('2')
                 end
                 if IsControlJustReleased(0, Config.Keys[Config.BadgePrompts['ROTATE'].key2]) then
                     BadgeData.R = BadgeData.R - 2.0
-
-                    print('1')
                 end
                 if IsControlJustReleased(0, Config.Keys[Config.BadgePrompts['CONFIRM'].key1]) then
                     BadgeData.IsAdjusting = false
