@@ -7,7 +7,8 @@ Config.Keys = {
     ['U'] = 0xD8F73058,["R"] = 0xE30CD707,["ENTER"] = 0xC7B5340A,['E'] = 0xCEFD9220,["J"] = 0xF3830D8E,
     ['F'] = 0xB2F377E8, ['C'] = 0x9959A6F0,
     ['L'] = 0x80F28E95, ['BACKSPACE'] = 0x156F7119,["DOWN"] = 0x05CA7C52,["UP"] = 0x6319DB71,["LEFT"] = 0xA65EBAB4,
-    ["RIGHT"] = 0xDEB34313, ["SPACEBAR"] = 0xD9D0E1C0, ["DEL"] = 0x4AF4D473,
+    ["RIGHT"] = 0xDEB34313, ["SPACEBAR"] = 0xD9D0E1C0, ["DEL"] = 0x4AF4D473, ['1'] = 0xE6F612E4, ['2'] = 0x1CE6D9EB,
+    ['TWIRL_LEFT'] = 0xAE69478F, ['TWIRL_RIGHT'] = 0x8F9F9E58, ['5'] = 0xAB62E997,
 }
 
 Config.PromptAction = { label = "Press", key = 'G', hold = 1000 }
@@ -17,6 +18,15 @@ Config.WagonPrompts = {
     ['NEXT']        = { label = 'Next',     key = 'RIGHT',     hold = 500  },
     ['SELECT']      = { label = 'Select',   key = 'ENTER',     hold = 1000 },
     ['EXIT']        = { label = 'Exit',     key = 'BACKSPACE', hold = 1000 },
+}
+
+Config.BadgePrompts = {
+
+    ['UP_DOWN']    = { label = 'Up | Down', key1 = 'UP', key2 = 'DOWN' },
+    ['LEFT_RIGHT'] = { label = 'Left | Right', key1 = 'LEFT', key2 = 'RIGHT' },
+    ['IN_OUT']     = { label = 'In | Out', key1 = '1', key2 = '2' },
+    ['ROTATE']     = { label = 'Rotate Left | Rotate Right', key1 = 'TWIRL_LEFT', key2 = 'TWIRL_RIGHT' },
+    ['CONFIRM']    = { label = 'Confirm',   key1 = '5', key2 = nil  },
 }
 
 ---------------------------------------------------------------
@@ -66,6 +76,37 @@ Config.Items = {
 
     }, -- Detective kit to check dead bodies and their causes.
 
+}
+
+---------------------------------------------------------------
+--[[ Badges ]]--
+---------------------------------------------------------------
+
+-- The command to equip the badge.
+Config.EquipBadgeCommand = { Enabled = true, Command = "badge" }
+
+-- The command or the key to modify the badge.
+Config.AdjustBadge = { 
+    Command = "adjustbadge",
+
+    HelpText = {
+        Enabled = true,
+        Text = "Use /adjustbadge for adjusting the badge.",
+        DisplayDuration = 10, -- time in seconds.
+    },
+
+}
+
+-- The item to equip the badge.
+Config.BadgeItem = "badge"
+
+-- [1] : object entity name.
+Config.Badges = {
+    ["s_badgepolice01x"]    = { Jobs = {"police"},    Grades = { {0, 1}, } },
+    ["s_badgedeputy01x"]    = { Jobs = {"police"},    Grades = { {2 },   } },
+    ["s_badgeusmarshal01x"] = { Jobs = {"police"},    Grades = { {3, 4 },} },
+    ["s_badgesherif01x"]    = { Jobs = {"police"},    Grades = { {5, 6}, } },
+    ["s_badgepinkerton01x"] = { Jobs = {"detective"}, Grades = { {0, 1}, } },
 }
 
 ---------------------------------------------------------------
@@ -367,3 +408,4 @@ function SendNotification(source, message, type)
   
 
 end
+
