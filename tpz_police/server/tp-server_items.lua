@@ -35,6 +35,15 @@ Citizen.CreateThread(function()
 
 end)
 
+TPZInv.registerUsableItem(Config.BadgeItem, "tpz_police", function(data)
+	local _source = data.source
+	local xPlayer = TPZ.GetPlayer(_source)
+	local job     = xPlayer.getJob()
+	local grade   = xPlayer.getJobGrade()
+
+	TriggerClientEvent("tpz_police:client:use_badge", _source, job, grade )
+end)
+
 -----------------------------------------------------------
 --[[ Items Registration  ]]--
 -----------------------------------------------------------
@@ -85,3 +94,4 @@ AddEventHandler("tpz_police:server:onItemUpdate", function(itemIndex, data)
 	end
 
 end)
+
