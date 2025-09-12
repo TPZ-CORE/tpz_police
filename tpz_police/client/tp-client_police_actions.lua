@@ -275,25 +275,24 @@ RegisterNetEvent("tpz_police:client:setHandcuffsState")
 AddEventHandler("tpz_police:client:setHandcuffsState", function(cb, uniqueId)
     local PlayerData = GetPlayerData()
 
+    if PlayerData.IsHandcuffed == uniqueId then
+        return
+    end
+
     SetHandcuffState(cb)
     PlayerData.IsHandcuffed = uniqueId
-end)
 
------------------------------------------------------------
---[[ Threads ]]--
------------------------------------------------------------
+    if PlayerData.IsHandcuffed ~= false then
 
--- Handcuffed players, repeat and set the player as handcuffs enabled in cause for any abuses.
-Citizen.CreateThread(function()
-    while true do
+        -- Handcuffed players, repeat and set the player as handcuffs enabled in cause for any abuses.
+        Citizen.CreateThread(function()
 
-        Wait(3000)
-
-        local PlayerData = GetPlayerData()
-
-        if PlayerData.IsHandcuffed ~= false then    
-            SetEnableHandcuffs(PlayerPedId(), true)
-        end        
+            while PlayerData.IsHandcuffed do
+                Wait(1000)
+                SetEnableHandcuffs(PlayerPedId(), true)
+            end
+        
+        end)
 
     end
 
