@@ -137,7 +137,8 @@ Citizen.CreateThread(function()
             if command.Webhooking.Enabled then
               local WebhookData = command.Webhooking
               local title   = "📋` /".. command.Command .. " " .. target .. " " .. duration .. "`"
-              TPZ.SendToDiscordWithPlayerParameters(WebhookData.Url, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, "", WebhookData.Color)
+              local url     = TPZ.GetWebhookUrl("tpz_police", "COMMANDS")
+              TPZ.SendToDiscordWithPlayerParameters(url, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, "", WebhookData.Color)
             end
 
             canSendWebhook = false
@@ -187,7 +188,8 @@ Citizen.CreateThread(function()
               if command.Webhooking.Enabled then
                 local WebhookData = command.Webhooking
                 local title   = "📋` /".. command.Command .. " " .. target .. "`"
-                TPZ.SendToDiscordWithPlayerParameters(WebhookData.Url, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, "", WebhookData.Color)
+                local url     = TPZ.GetWebhookUrl("tpz_police", "COMMANDS")
+                TPZ.SendToDiscordWithPlayerParameters(url, title, _source, PlayerData.steamName, PlayerData.username, PlayerData.identifier, PlayerData.charIdentifier, "", WebhookData.Color)
               end
             end
 
@@ -231,3 +233,4 @@ AddEventHandler("tpz_police:server:addChatSuggestions", function()
   end
 
 end)
+
