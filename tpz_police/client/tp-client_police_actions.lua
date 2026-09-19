@@ -235,7 +235,7 @@ AddEventHandler("tpz_police:client:item", function(itemIndex, data)
 
             SendNotification(nil, deathCause, "info")
 
-            TriggerServeEvent("tpz_police:server:onItemUpdate", itemIndex, data) -- remove durability.
+            TriggerServerEvent("tpz_police:server:onItemUpdate", itemIndex, data) -- remove durability.
         else
 
             SendNotification(nil, Locales['UNKNOWN_DEATH_CAUSE'], "error") -- unknown death cause.
@@ -252,7 +252,7 @@ AddEventHandler("tpz_police:client:item", function(itemIndex, data)
 
         data = { foundTargetSourceId }
 
-        TriggerServeEvent("tpz_police:server:onItemUpdate", itemIndex, data) -- remove handcuffs item.
+        TriggerServerEvent("tpz_police:server:onItemUpdate", itemIndex, data) -- remove handcuffs item.
 
     elseif Config.Items[itemIndex] == 'HANDCUFFS_KEY' then 
 
@@ -266,7 +266,7 @@ AddEventHandler("tpz_police:client:item", function(itemIndex, data)
             return
         end
 
-        TriggerServeEvent("tpz_police:server:onItemUpdate", itemIndex, data) -- removes handcuff keys.
+        TriggerServerEvent("tpz_police:server:onItemUpdate", itemIndex, data) -- removes handcuff keys.
     end
 
 end)
